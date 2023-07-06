@@ -1,7 +1,7 @@
 import express from "express";
-import{ createController, getAllCars, updateController,deleteController } from "../controller/index";
+import{ createController, getAllCars, updateController,deleteController } from "../controller/index"
 
-const router = express.Router();
+const router = express.Router()
 
 router.get('/', getAllCars)
 router.post('/create',createController)

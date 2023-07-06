@@ -1,8 +1,8 @@
-import{getCars,createCar,updateCar,deleteCar} from "../DB/index"
+import{getCars,createCar,updateCar,deleteCar} from "../DB/index.js"
 
 //Function communication between the db and the controller folder
 
-const getAllCars = async(req,re)=>{
+const getAllCars = async(req,res)=>{
     try{
         const allCars = await getCars()
 
@@ -14,7 +14,7 @@ const getAllCars = async(req,re)=>{
 
 const createController =async(req,res)=>{
 
-    const(values)=req.body
+    const{values}=req.body
 
     try{
         const newCar = await createCar({
