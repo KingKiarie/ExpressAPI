@@ -1,29 +1,40 @@
 import express from "express";
 import cors from "cors";
 import mongoose from "mongoose";
-import http from "http"
-import router from './routes/index.js'
+import http from "http";
+import dotenv from "dotenv"
 
+//Importing from folder structure
+import router from "./router/index.js";
+
+//dotenv config
+dotenv.config()
+
+//middlewares
 const app = express();
-
-
 app.use(cors({
-  origin:"*"
+    origin:"*"
 }))
-
 app.use(express.json())
 
-const server = http.createServer(app)
-server.listen(8000,()=>{
-  console.log('Server is running on http://localhost8000')
+//serverConnection
+const server = http.createServer(app);
+server.listen(8080, ()=>{
+    console.log('Server is running on port http://localhost8080')
 })
 
-//connecting mongodb url from mongo db site
-const mongoUrl='mongodb+srv://KevinKiarie:sxTjUzIJtsla7ysC@node-lib.lpuparh.mongodb.net/?retryWrites=true&w=majority'
+//initialising a MongoUrl connection
+const mongoUrl = process.env.MONGO_URL;
 
-mongoose.connect(mongoUrl)
-.then(()=>{console.log('MONGODB is connected')})
-.catch((err)=>{console.log(err)})
-
+mongoose.connect(mongoUrl);
+.then(()=>{
+    console.log('MongoDB connected')
+})
+.catch((err)=>{
+    console.log(err)
+})
 
 app.use('/',router)
+
+
+
