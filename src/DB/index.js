@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose from "mongoose"
 
 const carSchema = new mongoose.Schema({
     title:{type: String},
@@ -8,11 +8,11 @@ const carSchema = new mongoose.Schema({
 })
 
 //variable collection for grouping items in one
-const Car = mongoose.model('Car',carSchema);
+const Car = mongoose.model('Car',carSchema)
 
 //finding all cars available in the car model
 const getCars =()=>{
-    return Car.find();
+    return Car.find()
 }
 
 //method for creating a car in the collection
